@@ -8,8 +8,18 @@
     <servlet-name>personController</servlet-name>
     <servlet-class>com.healthcareApp.controller.PersonController</servlet-class>
   </servlet>
+
+  <servlet>
+    <servlet-name>personDeleteController</servlet-name>
+    <servlet-class>com.healthcareApp.controller.PersonDeleteController</servlet-class>
+  </servlet>
   <servlet-mapping>
     <servlet-name>personController</servlet-name>
     <url-pattern>/person-controller</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>personDeleteController</servlet-name>
+    <url-pattern>/person-delete-controller</url-pattern>
   </servlet-mapping>
 </web-app>
