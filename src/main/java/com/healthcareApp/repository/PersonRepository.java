@@ -11,7 +11,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PersonRepository {
+
     public boolean createPerson(Person person) throws SQLException {
+
         String query = "INSERT INTO person (personId, type, firstName, lastName, age , gender , contactNo , alternateMobile , address)" +
                 " VALUES (?, ?, ?, ?, ?, ?, ? , ? ,?)";
 

@@ -10,6 +10,6 @@ public class DoctorDeleteController extends HttpServlet {
         System.out.println("=========inside the doPost() method============");
         System.out.println("=========delete the Doctor============");
 
-        
+
     }
 }
