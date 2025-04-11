@@ -10,9 +10,9 @@
 </head>
 <body>
 <div class="form-container">
-<h1>Doctor Information Form</h1>
+  <h1>Doctor Information Form</h1>
 
-<form action="/servlet-healthcare-management-system/doctor-controller" method="POST">
+  <form action="/servlet-healthcare-management-system/doctor-controller" method="POST">
 
    <label for="doctorId">PersonId:</label>
    <input type="text" id="doctorId" name="doctorId" placeholder="doctorId" required><br>
