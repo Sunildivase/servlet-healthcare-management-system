@@ -4,6 +4,7 @@
 <head>
     <title>Doctor List</title>
 </head>
+<link rel="stylesheet" href="style.css">
 <body>
     <h2>List of Doctor</h2>
     <table border="1">

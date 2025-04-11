@@ -4,6 +4,7 @@
 <head>
     <title>Person List</title>
 </head>
+<link rel="stylesheet" href="style.css">
 <body>
     <h2>List of Person</h2>
     <table border="1">
