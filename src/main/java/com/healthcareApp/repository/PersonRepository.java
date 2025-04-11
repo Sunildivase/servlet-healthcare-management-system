@@ -35,17 +35,20 @@ public class PersonRepository {
             return preparedStatement.executeUpdate() > 0;
 
         } catch (SQLException e) {
-            throw new RuntimeException("Error inserting customer: " + e.getMessage(), e);
+            throw new RuntimeException("Error inserting person: " + e.getMessage(), e);
         }
     }
 
-    public List<Person> displayPerson() {
+    public List<Person> displayPerson() throws SQLException {
         List<Person> personList = new ArrayList<>();
+
+        Connection connection = new ConnectionService().getConnection();
+
         String query = "SELECT * FROM person";
 
-        try (Connection connection = new ConnectionService().getConnection();
-             PreparedStatement preparedStatement = connection.prepareStatement(query);
-             ResultSet resultSet = preparedStatement.executeQuery()) {
+        try (PreparedStatement preparedStatement = connection.prepareStatement(query)){
+
+            ResultSet resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()) {
                 Person person = new Person(

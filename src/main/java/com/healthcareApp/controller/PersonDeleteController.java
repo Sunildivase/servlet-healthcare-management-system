@@ -32,9 +32,9 @@ public class PersonDeleteController {
         PrintWriter out = response.getWriter();
         out.println("<html><body>");
         if (deleted) {
-            out.println("<h1>Customer deleted successfully</h1>");
+            out.println("<h1>person deleted successfully</h1>");
         } else {
-            out.println("<h1>Customer not found</h1>");
+            out.println("<h1>person not found</h1>");
         }
         out.println("</body></html>");
     }

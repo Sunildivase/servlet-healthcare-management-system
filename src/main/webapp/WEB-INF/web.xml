@@ -13,6 +13,12 @@
     <servlet-name>personDeleteController</servlet-name>
     <servlet-class>com.healthcareApp.controller.PersonDeleteController</servlet-class>
   </servlet>
+
+  <servlet>
+    <servlet-name>doctorController</servlet-name>
+    <servlet-class>com.healthcareApp.controller.DoctorController</servlet-class>
+  </servlet>
+
   <servlet-mapping>
     <servlet-name>personController</servlet-name>
     <url-pattern>/person-controller</url-pattern>
@@ -21,5 +27,10 @@
   <servlet-mapping>
     <servlet-name>personDeleteController</servlet-name>
     <url-pattern>/person-delete-controller</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>doctorController</servlet-name>
+    <url-pattern>/doctor-controller</url-pattern>
   </servlet-mapping>
 </web-app>

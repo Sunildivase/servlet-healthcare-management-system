@@ -15,15 +15,15 @@ public class DoctorService {
         return doctorRepository.createDoctor(doctor);
     }
 
-    public boolean updateDoctor(int doctorId,String firstName){
+    public boolean updateDoctor(int doctorId,String firstName) throws SQLException {
         return doctorRepository.updateDoctor(doctorId,firstName);
     }
 
-    public boolean deleteDoctor(int doctorId){
+    public boolean deleteDoctor(int doctorId) throws SQLException {
         return doctorRepository.deleteDoctor(doctorId);
     }
 
-    public List<Doctor> displayDoctor(){
+    public List<Doctor> displayDoctor() throws SQLException {
         return  doctorRepository.displayDoctor();
     }
 }
