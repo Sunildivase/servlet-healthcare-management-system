@@ -3,15 +3,11 @@
  "http://java.sun.com/dtd/web-app_2_3.dtd" >
 
 <web-app>
+
   <display-name>Archetype Created Web Application</display-name>
   <servlet>
     <servlet-name>personController</servlet-name>
     <servlet-class>com.healthcareApp.controller.PersonController</servlet-class>
-  </servlet>
-
-  <servlet>
-    <servlet-name>personDeleteController</servlet-name>
-    <servlet-class>com.healthcareApp.controller.PersonDeleteController</servlet-class>
   </servlet>
 
   <servlet>
@@ -29,10 +25,6 @@
     <url-pattern>/person-controller</url-pattern>
   </servlet-mapping>
 
-  <servlet-mapping>
-    <servlet-name>personDeleteController</servlet-name>
-    <url-pattern>/person-delete-controller</url-pattern>
-  </servlet-mapping>
 
   <servlet-mapping>
     <servlet-name>doctorController</servlet-name>

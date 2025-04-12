@@ -2,6 +2,7 @@ package com.healthcareApp.controller;
 
 import com.healthcareApp.model.Person;
 import com.healthcareApp.service.PersonService;
+import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -25,9 +26,9 @@ public class PersonController extends HttpServlet {
 //            System.out.println("--------redirecting servlet request to dispatcher-----");
 //            request.setAttribute("personList",personList);
 //
-//            request.getRequestDispatcher("/DisplayPerson.jsp").forward(request,response);
+//            request.getRequestDispatcher("DisplayPerson.jsp").forward(request,response);
 //
-//        } catch (SQLException | ServletException e) {
+//        } catch (SQLException  | ServletException e) {
 //
 //            throw new RuntimeException(e);
 //        }
@@ -101,12 +102,38 @@ public class PersonController extends HttpServlet {
 
         if (request.getMethod().equals("POST")) {
             this.doPost(request, response);
+        } else if (request.getMethod().equals("DELETE")) {
+            this.destroy(request,response);
         } else {
             this.doGet(request, response);
         }
     }
-    public void destroy(HttpServletRequest request,HttpServletResponse response){
+    public void destroy(HttpServletRequest request,HttpServletResponse response) throws IOException {
         System.out.println("========inside the destroy() method=====");
 
+        String idStr = request.getParameter("personId");  // This must not be null
+
+        if (idStr == null || idStr.trim().isEmpty()) {
+            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "personId is required.");
+            return;
+        }
+
+        int personId = Integer.parseInt(idStr);  // This line throws error if idStr is null
+
+        boolean deleted = false; // Assuming service accepts id
+        try {
+            deleted = personService.deletePerson(personId);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        PrintWriter out = response.getWriter();
+        out.println("<html><body>");
+        if (deleted) {
+            out.println("<h1>person deleted successfully</h1>");
+        } else {
+            out.println("<h1>person not found</h1>");
+        }
+        out.println("</body></html>");
     }
+
 }
