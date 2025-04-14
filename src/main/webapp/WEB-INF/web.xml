@@ -20,6 +20,11 @@
    <servlet-class>com.healthcareApp.controller.HospitalController</servlet-class>
   </servlet>
 
+  <servlet>
+    <servlet-name>departmentController</servlet-name>
+    <servlet-class>com.healthcareApp.controller.DepartmentController</servlet-class>
+  </servlet>
+
   <servlet-mapping>
     <servlet-name>personController</servlet-name>
     <url-pattern>/person-controller</url-pattern>
@@ -35,4 +40,10 @@
     <servlet-name>hospitalController</servlet-name>
     <url-pattern>/hospital-controller</url-pattern>
   </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>departmentController</servlet-name>
+    <url-pattern>/department-controller</url-pattern>
+  </servlet-mapping>
+
 </web-app>

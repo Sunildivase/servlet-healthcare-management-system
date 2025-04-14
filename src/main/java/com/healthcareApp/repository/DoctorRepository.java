@@ -101,7 +101,7 @@ public class DoctorRepository {
             preparedStatement.setString(1, firstName);
             preparedStatement.setInt(2, doctorId);
 
-            int rowUpdated = preparedStatement.executeUpdate(query);
+            int rowUpdated = preparedStatement.executeUpdate();
 
             return rowUpdated > 0;
         } catch (SQLException e) {

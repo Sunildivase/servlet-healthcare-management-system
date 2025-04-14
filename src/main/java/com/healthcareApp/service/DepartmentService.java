@@ -14,15 +14,15 @@ public class DepartmentService {
         return departmentRepository.createDepartment(department);
     }
 
-    public List<Department> displayDepartment(){
+    public List<Department> displayDepartment() throws SQLException {
         return departmentRepository.displayDepartment();
     }
 
-    public boolean updateDepartment(int deptId,String deptName){
+    public boolean updateDepartment(int deptId,String deptName) throws SQLException {
         return departmentRepository.updateDepartment(deptId,deptName);
     }
 
-    public boolean deleteDepartment(int deptId){
+    public boolean deleteDepartment(int deptId) throws SQLException {
         return departmentRepository.deleteDepartment(deptId);
     }
 }
