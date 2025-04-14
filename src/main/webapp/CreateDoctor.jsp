@@ -14,7 +14,7 @@
 
   <form action="/servlet-healthcare-management-system/doctor-controller" method="POST">
 
-   <label for="doctorId">PersonId:</label>
+   <label for="doctorId">doctorId:</label>
    <input type="text" id="doctorId" name="doctorId" placeholder="doctorId" required><br>
 
      <label for="firstName">FirstName:</label>

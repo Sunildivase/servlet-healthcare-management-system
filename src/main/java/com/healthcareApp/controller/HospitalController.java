@@ -25,30 +25,30 @@ public class HospitalController extends HttpServlet {
 
         writer.println("<html><body>");
         writer.println("<h1>Hospital List</h1><table border='1'>");
-        writer.println("<tr>"+
-                 "<th>hospitalId</th>"+
-                 "<th>hospitalName</th>"+
-                 "<th>address</th>"+
-                 "<th>emailId</th>"+
-                 "<th>contactNo</th>"+
+        writer.println("<tr>" +
+                "<th>hospitalId</th>" +
+                "<th>hospitalName</th>" +
+                "<th>address</th>" +
+                "<th>emailId</th>" +
+                "<th>contactNo</th>" +
                 "</tr>"
         );
 
-        try{
+        try {
             List<Hospital> hospitalList = hospitalService.displayHospital();
-            for(Hospital hospital : hospitalList){
+            for (Hospital hospital : hospitalList) {
                 writer.println(
                         "<tr>" +
-                                "<td>"+ hospital.getHospitalId()+"</td>"+
-                                "<td>"+hospital.getHospitalName()+"</td>"+
-                                "<td>"+hospital.getAddress()+"</td>"+
-                                "<td>"+hospital.getEmailId()+"</td>"+
-                                "<td>"+hospital.getContactNo()+"</td>"+
-                         "</tr>"
+                                "<td>" + hospital.getHospitalId() + "</td>" +
+                                "<td>" + hospital.getHospitalName() + "</td>" +
+                                "<td>" + hospital.getAddress() + "</td>" +
+                                "<td>" + hospital.getEmailId() + "</td>" +
+                                "<td>" + hospital.getContactNo() + "</td>" +
+                                "</tr>"
 
-                        );
+                );
             }
-        }catch (SQLException e){
+        } catch (SQLException e) {
             System.err.println("<p> Error fetching hospital </p>");
         }
 
@@ -64,20 +64,20 @@ public class HospitalController extends HttpServlet {
         String emailId = request.getParameter("emailId");
         String contactNo = request.getParameter("contactNo");
 
-        Hospital hospital = new Hospital(hospitalId,hospitalName,address,emailId,contactNo);
+        Hospital hospital = new Hospital(hospitalId, hospitalName, address, emailId, contactNo);
 
         response.setContentType("text/html");
 
         PrintWriter writer = response.getWriter();
 
-        try{
-            if(hospitalService.insertHospital(hospital)){
+        try {
+            if (hospitalService.insertHospital(hospital)) {
                 writer.println("<h2> hospital Inserted Successfully !!");
-            }else{
+            } else {
                 writer.println("<h2> Failed to Insert Hospital");
             }
         } catch (SQLException e) {
-            System.err.println("<p> Error: "+e.getMessage()+"</P>");
+            System.err.println("<p> Error: " + e.getMessage() + "</P>");
         }
 
     }
@@ -85,16 +85,43 @@ public class HospitalController extends HttpServlet {
     public void service(HttpServletRequest request, HttpServletResponse response) throws IOException {
         System.out.println("========inside the service()=========");
 
-        if(request.getMethod().equals("POST")){
-            this.doPost(request,response);
-        }else{
-            this.doGet(request,response);
+        if (request.getMethod().equals("POST")) {
+            this.doPost(request, response);
+        } else if (request.getMethod().equals("DELETE")) {
+            this.destroy(request,response);
+        } else {
+            this.doGet(request, response);
         }
 
     }
 
-    public void destroy(HttpServletRequest request, HttpServletResponse response){
-        System.out.println("========inside the destroy()=========");
+    public void destroy(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        System.out.println("========inside the destroy() method=====");
 
+        String idStr = request.getParameter("hospitalId");  // This must not be null
+
+        if (idStr == null || idStr.trim().isEmpty()) {
+            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "personId is required.");
+            return;
+        }
+
+        int hospitalId = Integer.parseInt(idStr);  // This line throws error if idStr is null
+
+        boolean deleted = false; // Assuming service accepts id
+        try {
+            deleted = hospitalService.deleteHospital(hospitalId);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        PrintWriter out = response.getWriter();
+        out.println("<html><body>");
+        if (deleted) {
+            out.println("<h1>Hospital deleted successfully</h1>");
+        } else {
+            out.println("<h1>Hospital not found</h1>");
+        }
+        out.println("</body></html>");
     }
+
 }
+
