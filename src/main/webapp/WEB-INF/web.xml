@@ -30,6 +30,11 @@
     <servlet-class>com.healthcareApp.controller.AppointmentController</servlet-class>
   </servlet>
 
+  <servlet>
+    <servlet-name>prescriptionController</servlet-name>
+   <servlet-class>com.healthcareApp.controller.PrescriptionController</servlet-class>
+  </servlet>
+
   <servlet-mapping>
     <servlet-name>personController</servlet-name>
     <url-pattern>/person-controller</url-pattern>
@@ -54,6 +59,11 @@
   <servlet-mapping>
     <servlet-name>appointmentController</servlet-name>
     <url-pattern>/appointment-controller</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>prescriptionController</servlet-name>
+    <url-pattern>/prescription-controller</url-pattern>
   </servlet-mapping>
 
 </web-app>
