@@ -21,7 +21,7 @@ public class AppointmentController extends HttpServlet {
 
 
 //        try {
-//            List<Doctor> appointmentList = appointmentService.displayAppointment();
+//            List<Appointment> appointmentList = appointmentService.displayAppointment();
 //
 //            System.out.println("---------set the attribute-------");
 //            System.out.println("--------redirecting servlet request to dispatcher-----");
