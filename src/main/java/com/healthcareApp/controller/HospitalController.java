@@ -19,6 +19,19 @@ public class HospitalController extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         System.out.println("========inside the doGet()=========");
 
+        //        try {
+//            List<Hospital> hospitalList = hospitalService.displayHospital();
+//
+//            System.out.println("---------set the attribute-------");
+//            System.out.println("--------redirecting servlet request to dispatcher-----");
+//            request.setAttribute("hospitalList",hospitalList);
+//
+//            request.getRequestDispatcher("DisplayHospital.jsp").forward(request,response);
+//
+//        } catch (SQLException  | ServletException e) {
+//
+//            throw new RuntimeException(e);
+//        }
         response.setContentType("text/html");
 
         PrintWriter writer = response.getWriter();
